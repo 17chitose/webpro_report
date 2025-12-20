@@ -2,16 +2,20 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="/public/styles.css">
   <title><%= data.name %></title>
 </head>
 <body>
   <h2><%= data.name %></h2>
-  <td>お題:</td><td><%= data.name %></td>
   <table>
     <tr><td><%= data.kakeru %></td><td>とかけまして</td></tr>
     <tr><td><%= data.toku %></td><td>とときます</td></tr>
-    <tr><td>そのこころは</td><td><%= data.kokoro %></td></tr>
   </table>
+  <details>
+    <summary>そのこころは</summary>
+    <%= data.kokoro %>
+  </details>
+  
   <a href="/edit/<%= id %>">編集</a>
   <a href="/delete/<%= id %>">削除</a>
   <a href="/">お題一覧に戻る</a>

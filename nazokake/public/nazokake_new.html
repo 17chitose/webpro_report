@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <link rel="stylesheet" href="/public/styles.css">
     <meta charset="UTF-8">
     <title>なぞかけ登録</title>
 </head>
 <body>
     <form action="/" method="POST">
-        <label for="name">お題:</label>
-        <input type="text" name="name" required><br>
-        <input type="text" name="kakeru" required>
-        <label for="kakeru">とかけまして</label><br>
-        <input type="text" name="toku">
-        <label for="toku">とときます</label><br>
-        <label for="kokoro">そのこころは</label>
-        <input type="text" name="kokoro" required><br>
+
+    <table>
+        <tr><td><label for="name">お題:</label></td>
+        <td><input type="text" name="name" required></td></tr>
+        <tr><td><input type="text" name="kakeru" required></td>
+        <td><label for="kakeru">とかけまして</label></td></tr>
+        <tr><td><input type="text" name="toku"></td>
+        <td><label for="toku">とときます</label></td></tr>
+        <tr><td><label for="kokoro">そのこころは</label></td>
+        <td><input type="text" name="kokoro" required></td></tr>
+    </table>
         <input type="submit" values="登録">
     </form>
 </body>
