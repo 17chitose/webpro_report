@@ -9,11 +9,14 @@ app.use("/public", express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
 let nazokake_naiyo = [
-  { name:"東京駅", kakeru:"総武本線，中央線，etc", toku:"403831", kokoro:"0" },
-  { name:"東京駅", kakeru:"総武本線，中央線，etc", toku:"403831", kokoro:"0" },
-  { name:"東京駅", kakeru:"総武本線，中央線，etc", toku:"403831", kokoro:"0" },
-  { name:"東京駅", kakeru:"総武本線，中央線，etc", toku:"403831", kokoro:"0" },
-  { name:"東京駅", kakeru:"総武本線，中央線，etc", toku:"403831", kokoro:"0" },
+  { name:"埼玉県", kakeru:"埼玉県", toku:"中学時代に書いたポエム", kokoro:"どちらも，海無いで（う，見ないで）" },
+  { name:"蚊取り線香", kakeru:"蚊取り線香", toku:"いい匂いの雑巾で牛乳を拭いた", kokoro:"どちらも，蚊が亡くなる（嗅がなくなる）でしょう" },
+  { name:"ヒロイン", kakeru:"主人公の男の子が脇役の女の子といい感じ", toku:"大きな畑に種をまこう", kokoro:"どちらも，ヒロインですが負けました（広いんですが負けました）" },
+  { name:"アキラ100%", kakeru:"メガネを掛けたアキラ100%", toku:"振られても何度もアタックする人", kokoro:"どちらも，アキラ目が悪い（諦めが悪い）でしょう" },
+  { name:"なぞかけ", kakeru:"なぞかけ", toku:"サウナ", kokoro:"どちらも，ととのうでしょう" },
+  { name:"シャーペン", kakeru:"シャーペン", toku:"成金が言いそうなセリフ", kokoro:"どちらも，折れやすいもの（俺安いもの）はダメなんだよね" },
+  { name:"おにぎり", kakeru:"おにぎり", toku:"賑わっている居酒屋", kokoro:"どちらも，鮭が梅と（酒がうめえと）人気を独占しているでしょう" },
+  { name:"冷やし中華", kakeru:"冷やし中華に彩りがないよ", toku:"反抗期の子供", kokoro:"どちらも，ハム買ってきます（歯向かってきます）" },
 ];
 
 app.get("/", (req, res) => {
