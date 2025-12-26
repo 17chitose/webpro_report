@@ -1,0 +1,22 @@
+<!Doctype html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/public/styles.css">
+  <title>やることリスト</title>
+</head>
+<body>
+  <h2>やること</h2>
+  <table>
+    <tr><th>ID</th><th>やること名</th></tr>
+      <% let number = 0 %>
+      <% for( let row of data ) { %>
+        <tr><td><%= row.id %></td>
+        <td><a href="/<%= number %>"><%= row.name %></a></td></tr>
+        <% number += 1 %>
+      <% } %>
+  </table>
+  <a href="/create">追加</a>
+</body>
+</html>

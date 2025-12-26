@@ -6,7 +6,7 @@
 </head>
 <body>
   <h2><%= data.name %>の編集</h2>
-  <form action="/keiyo2/update/<%= data.id - 1 %>" method="POST">
+  <form action="/update/<%= data.id - 1 %>" method="POST">
     <table>
       <tr><th>項目</th><th>データ</th></tr>
       <tr><td>ID</td><td><input type="text" name="code" value="<%= data.id %>"></td></tr>
@@ -17,6 +17,6 @@
     </table>
     <input type="submit" values="登録">
   </form>
-  <a href="/keiyo2/">駅一覧に戻る</a>
+  <a href="/">駅一覧に戻る</a>
 </body>
 </html>

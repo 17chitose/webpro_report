@@ -1,0 +1,21 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/public/styles.css">
+  <title><%= data.name %></title>
+</head>
+<body>
+  <h2><%= data.name %>の編集</h2>
+  <form action="/update/<%= id %>" method="POST">
+    <table>
+      <tr><th>項目</th><th>データ</th></tr>
+      <tr><td>ID</td><td><input type="text" name="code" value="<%= data.id %>"></td></tr>
+      <tr><td>やること名</td><td><input type="text" name="name" value="<%= data.name %>"></td></tr>
+      <tr><td>やることの詳細</td><td><input type="text" name="detail" value="<%= data.detail %>"></td></tr>
+    </table>
+    <input type="submit" values="登録">
+  </form>
+  <a href="/">やること一覧に戻る</a>
+</body>
+</html>
