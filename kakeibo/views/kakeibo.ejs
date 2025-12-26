@@ -3,19 +3,26 @@
 <head>
   
   <meta charset="utf-8">
-  <title>なぞかけ投稿サイト</title>
+  <link rel="stylesheet" href="/public/styles.css">
+  <title>家計簿</title>
 </head>
 <body>
-  <h2>お題一覧</h2>
+  <h2>家計簿</h2>
   <table>
-    <tr><th>ID</th><th>駅コード</th><th>駅名</th></tr>
+    <tr><th>名前</th><th>カテゴリー</th><th>金額</th></tr>
       <% let number = 0 %>
+      <% let total = 0 %>
       <% for( let row of data ) { %>
-        <tr><td><%= row.id %></td>
-        <td><%= row.code %></td>
-        <td><a href="/<%= number %>"><%= row.name %></a></td></tr>
+        <% total += Number(row.price) %>
+        <tr><td><a href="/<%= number %>"><%= row.name %></a></td>
+        <td><%= row.category %></td>
+        <td><%= row.price %>円</td></tr>
         <% number += 1 %>
       <% } %>
+  </table>
+  <table>
+    <tr><th>合計金額</th></tr>
+    <tr><td><%= total %>円</td></tr>
   </table>
   <a href="/create">追加</a>
 </body>

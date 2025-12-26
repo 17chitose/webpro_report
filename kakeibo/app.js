@@ -8,31 +8,29 @@ app.use("/public", express.static(__dirname + "/public"));
 
 app.use(express.urlencoded({ extended: true }));
 
-let station2 = [
-  { id:1, code:"JE01", name:"東京駅", change:"総武本線，中央線，etc", passengers:403831, distance:0 },
-  { id:2, code:"JE02", name:"八丁堀駅", change:"日比谷線", passengers:31071, distance:1.2 },
-  { id:3, code:"JE05", name:"新木場駅", change:"有楽町線，りんかい線", passengers:67206, distance:7.4 },
-  { id:4, code:"JE07", name:"舞浜駅", change:"舞浜リゾートライン", passengers:76156,distance:12.7 },
-  { id:5, code:"JE12", name:"新習志野駅", change:"", passengers:11655, distance:28.3 },
-  { id:6, code:"JE17", name:"千葉みなと駅", change:"千葉都市モノレール", passengers:16602, distance:39.0 },
-  { id:7, code:"JE18", name:"蘇我駅", change:"内房線，外房線", passengers:31328, distance:43.0 },
+let money = [
+  { name:"お昼ご飯", category:"食費", price:1000 },
+  { name:"ゲーム", category:"レジャー", price:3303 },
+  { name:"お菓子", category:"お菓子", price:200 },
+  { name:"交通費", category:"交通費", price:345 },
+  { name:"夕飯", category:"食費", price:1600 },
 ];
 
 app.get("/", (req, res) => {
   // 本来ならここにDBとのやり取りが入る
-  res.render('keiyo2', {data: station2} );
+  res.render('kakeibo', {data: money} );
 });
 
 // Create
 app.get("/create", (req, res) => {
-  res.redirect('/public/keiyo2_new.html');
+  res.redirect('/public/kakeibo_new.html');
 });
 
 app.get("/:number", (req, res) => {
   // 本来ならここにDBとのやり取りが入る
   const number = req.params.number;
-  const detail = station2[ number ];
-  res.render('keiyo2_detail', {id: number, data: detail} );
+  const detail = money[ number ];
+  res.render('kakeibo_detail', {id: number, data: detail} );
 });
 
 // Delete
@@ -40,42 +38,37 @@ app.get("/delete/:number", (req, res) => {
   // 本来は削除の確認ページを表示する
   // 本来は削除する番号が存在するか厳重にチェックする
   // 本来ならここにDBとのやり取りが入る
-  station2.splice( req.params.number, 1 );
+  money.splice( req.params.number, 1 );
   res.redirect('/' );
 });
 
 // Create
 app.post("/", (req, res) => {
   // 本来ならここにDBとのやり取りが入る
-  const id = station2.length + 1;
-  const code = req.body.code;
   const name = req.body.name;
-  const change = req.body.change;
-  const passengers = req.body.passengers;
-  const distance = req.body.distance;
-  station2.push( { id: id, code: code, name: name, change: change, passengers: passengers, distance: distance } );
-  console.log( station2 );
-  res.render('keiyo2', {data: station2} );
+  const category = req.body.category;
+  const price = req.body.price;
+  money.push( { name: name, category: category, price: price } );
+  console.log( money );
+  res.render('kakeibo', {data: money} );
 });
 
 // Edit
 app.get("/edit/:number", (req, res) => {
   // 本来ならここにDBとのやり取りが入る
   const number = req.params.number;
-  const detail = station2[ number ];
-  res.render('keiyo2_edit', {id: number, data: detail} );
+  const detail = money[ number ];
+  res.render('kakeibo_edit', {id: number, data: detail} );
 });
 
 // Update
 app.post("/update/:number", (req, res) => {
   // 本来は変更する番号が存在するか，各項目が正しいか厳重にチェックする
   // 本来ならここにDBとのやり取りが入る
-  station2[req.params.number].code = req.body.code;
-  station2[req.params.number].name = req.body.name;
-  station2[req.params.number].change = req.body.change;
-  station2[req.params.number].passengers = req.body.passengers;
-  station2[req.params.number].distance = req.body.distance;
-  console.log( station2 );
+  money[req.params.number].name = req.body.name;
+  money[req.params.number].category = req.body.category;
+  money[req.params.number].price = req.body.price;
+  console.log( money );
   res.redirect('/' );
 });
 
