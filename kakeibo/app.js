@@ -9,11 +9,11 @@ app.use("/public", express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
 let money = [
-  { name:"お昼ご飯", category:"食費", price:1000 },
-  { name:"ゲーム", category:"レジャー", price:3303 },
-  { name:"お菓子", category:"お菓子", price:200 },
-  { name:"交通費", category:"交通費", price:345 },
-  { name:"夕飯", category:"食費", price:1600 },
+  { name:"お昼ご飯", category:"食費", detail:"友達とランチ",price:1000 },
+  { name:"ゲーム", category:"レジャー",detail:"Minecraftを買った", price:3303 },
+  { name:"お菓子", category:"お菓子",detail:"グミを買った", price:200 },
+  { name:"交通費", category:"交通費",detail:"学校まで", price:345 },
+  { name:"夕飯", category:"食費",detail:"友達とディナー", price:1600 },
 ];
 
 app.get("/", (req, res) => {
@@ -47,8 +47,9 @@ app.post("/", (req, res) => {
   // 本来ならここにDBとのやり取りが入る
   const name = req.body.name;
   const category = req.body.category;
+  const detail = req.body.detail;
   const price = req.body.price;
-  money.push( { name: name, category: category, price: price } );
+  money.push( { name: name, category: category, detail: detail, price: price } );
   console.log( money );
   res.render('kakeibo', {data: money} );
 });
@@ -67,6 +68,7 @@ app.post("/update/:number", (req, res) => {
   // 本来ならここにDBとのやり取りが入る
   money[req.params.number].name = req.body.name;
   money[req.params.number].category = req.body.category;
+  money[req.params.number].detail = req.body.detail;
   money[req.params.number].price = req.body.price;
   console.log( money );
   res.redirect('/' );
